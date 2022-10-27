@@ -4,13 +4,13 @@ import SignInput from "../../components/SignInput";
 function Login(){
     return(
         <div>
-            <div class="Login">
-                <span>Login</span>
-                <div class="Login-Inputs">
+            <div class="login">
+                <div class="loginInputs">
+                    <span>Login</span>
                     <SignInput label="Email" type="email"/>
                     <SignInput label="Senha" type="password"/>
-                    <a href="/">Esqueceu a senha?</a>
                     <SignButton text="Entrar"/>
+                    <a href="/">Esqueceu a senha?</a>
                     <a href="/signup">Cadastre-se</a>
                 </div>
             </div>
