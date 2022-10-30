@@ -1,7 +1,7 @@
 function Signup(){
     return(
         <div>
-            <h1>Cadastro</h1>
+            <h1></h1>
         </div>
     );
 };

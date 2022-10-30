@@ -62,7 +62,7 @@ label{
   margin-top: 15px;
 }
 
-.login{
+#login{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,7 +70,7 @@ label{
   margin-top: 50%;
 }
 
-.loginInputs{
+#loginInputs{
   gap: 2px;
   min-width: 250px;
   display: flex;
@@ -85,12 +85,12 @@ label{
   margin: 10px;
 }
 
-.loginInputs a {
+.redirectLinks{
   font-weight: 500;
   margin-top: 10px;
 }
 
-.login span{
+#loginTitle{
   font-weight: bold;
   font-size: 25px;
 }

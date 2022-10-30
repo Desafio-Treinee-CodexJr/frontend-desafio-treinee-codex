@@ -1,0 +1,9 @@
+.invalidityMessage{
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+    color: #f02849;
+    font-size: 14px;
+    font-weight: 500;
+}
+
