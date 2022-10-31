@@ -6,7 +6,6 @@
 
 body{
   display: flex;
-  align-items: center;
   justify-content: center;
   margin: 1.5em;
   background-color: #FFFFFC;
@@ -14,22 +13,6 @@ body{
 
 input:focus{
   border-color: #0B8DC1;
-}
-
-button{
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #F4F5F5;
-  border: solid 1px #D4D8D8;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 15px;
-  transition: transform .3s;
-}
-
-button:hover{
-  transform: scale(1.05);
-  background-color: #ffffff;
 }
 
 a {

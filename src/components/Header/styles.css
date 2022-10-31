@@ -1,0 +1,23 @@
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100%;
+}
+
+#header-links{
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+}
+
+#header-links a{
+    color: black;
+}
+
+#header-icon img{
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%;
+}
+

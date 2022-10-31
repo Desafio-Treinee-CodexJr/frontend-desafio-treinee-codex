@@ -5,6 +5,7 @@ import InvalidityMsg from "../../components/InvalidityMsg";
 import { validateEmail, validatePassword } from "../../util/validation";
 import "./styles.css";
 import api from "../../service"
+import Header from "../../components/Header";
 
 function Login(){
 
@@ -55,8 +56,8 @@ function Login(){
     };
 
     return(
-
         <div>
+            <Header/>
             <div id="login">
                 <div id="loginInputs">
                     <span id="loginTitle">Login</span>
@@ -64,7 +65,7 @@ function Login(){
                     <InvalidityMsg msg={email.invalidity}/>
                     <SignInput label="Senha" type="password" value={password.value} onChange={changePassword}/>
                     <InvalidityMsg msg={password.invalidity}/>
-                    <SignButton onClick={submit} text="Entrar"/>
+                    <SignButton onClick={submit} text="Entrar" />
                     <a className="redirectLinks" href="/">Esqueceu a senha?</a>
                     <a className="redirectLinks" href="/signup">Cadastre-se</a>
                 </div>
