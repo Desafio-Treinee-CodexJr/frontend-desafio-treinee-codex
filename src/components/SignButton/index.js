@@ -3,7 +3,7 @@ import "./styles.css";
 
 function SignButton(props){
     return(
-        <button onClick={props.onClick} id="signin-button">
+        <button onClick={props.onClick} class="button">
             {props.text}
         </button>
     )

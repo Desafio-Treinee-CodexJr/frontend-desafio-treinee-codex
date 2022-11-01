@@ -25,13 +25,14 @@ function Home(props) {
     return (
         <>
             <Header />
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Add uma tarefa" value={newItem} onChange={value => setNewItem(value.target.value)} />
-                <button onClick={() => addNewItem()} >Add</button>
+            <form onSubmit={handleSubmit} id="form">
+                <input class="text-input" type="text" placeholder="Add uma tarefa" value={newItem} onChange={value => setNewItem(value.target.value)} />
+                <button class="button" onClick={() => addNewItem()} >Add</button>
             </form>
-            <ul>
+            <ul id="todo-list">
+                <h3>Lista:</h3>
                 {toDoItems.map((item, index) => (
-                <li>
+                <li id="todo-item">
                     {item}
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fillRule="currentColor" id="trash-icon" viewBox="0 0 16 16" onClick={() => deletItem(index)}>
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
