@@ -18,6 +18,9 @@ function Header(){
                     <a href="/signup">
                         <span>SignUp</span>
                     </a>
+                    <a href="/profile">
+                        <span>Profile</span>
+                    </a>
                 </div>
             </div>
         </header>
