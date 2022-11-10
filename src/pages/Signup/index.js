@@ -1,64 +1,95 @@
-import Header from "../../components/Header";
-import "./styles.css";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { LayoutComponents } from "../../components/LayoutComponents"
 
-function Signup(){
-    return(
-        <div>
-            <h1>Cadastro</h1>
-            <div class="box">
-            <form action="form.php" method="POST" class="main-form">
-                <div class="form-group">
-                    <label>Primeiro Nome: </label>
-                    <input type="text" placeholder="Escreva seu primeiro nome."/>
-                </div>
 
-                <div class="form-group">
-                    <label>Sobrenome: </label>
-                    <input type="text" placeholder="Escreva o seu sobrenome."/>
-                </div>
+export const Register = () => {
+  const [genero, setGenero] = useState("");
+  const [idade, setIdade] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [sobrenome, setSobrenome] = useState("");
 
-                <div class="form-group">
-                    <label>Gênero: </label>
-                    <select name="genero">
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="outro">Outro</option>
-                    </select>
-                </div>
+  return (
+    <LayoutComponents >
+      <form className="login-form">
+        <span className="login-form-title"> Crie a sua conta </span>
 
-                <div class="form-group">
-                    <label>Idade: </label>
-                    <input type="number" name="idade" placeholder="Escreva sua idade."/>
-                </div>
-
-                <div class="form-group">
-                    <label>Primeiro Nome:</label>
-                    <input type="text" placeholder="Escreva seu primeiro nome."/>
-                </div>
-
-                <div class="form-group">
-                    <label>email:</label>
-                    <input type="email" placeholder="Ex email@gmail.com."/>
-                </div>
-
-                <div class="form-group">
-                    <label>Senha:</label>
-                    <input type="password" placeholder="Informe uma senha."/>
-                </div>
-
-                <div class="form-group">
-                    <label>Repete Senha:</label>
-                    <input type="password" placeholder="\por favor, repita sua senha."/>
-                </div>
-
-                <div class="buttom">
-                    <input type = "submit" name="submit" value="Submit"/>
-                </div>
-
-            </form>
-            </div>
+        <div className="wrap-input">
+          <input
+            className={name !== "" ? "has-val input" : "input"}
+            type="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <span className="focus-input" data-placeholder="Escreva seu nome"></span>
         </div>
-    );
-};
 
-export default Signup;
+        <div className="wrap-input">
+          <input
+            className={name !== "" ? "has-val input" : "input"}
+            type="sobrename"
+            value={name}
+            onChange={(e) => setSobrenome(e.target.value)}
+          />
+          <span className="focus-input" data-placeholder="Escreva seu sobrenome"></span>
+        </div>
+
+        <div class="wrap-input">
+          <label>Gênero: </label>
+          <select name="genero">
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+          </select>
+          <input>
+          type="number"
+          name="genero"
+          onChange={(e) => setGenero(e.target.value)}
+          </input>
+        </div>
+
+        <div class="wrap-input">
+          <label>Idade: </label>
+          <input
+            type="number"
+            name="idade"
+            placeholder="Escreva sua idade."
+            onChange={(e) => setIdade(e.target.value)} />
+        </div>
+
+        <div className="wrap-input">
+          <input
+            className={email !== "" ? "has-val input" : "input"}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <span className="focus-input" data-placeholder="Escreva seu email"></span>
+        </div>
+
+        <div className="wrap-input">
+          <input
+            className={password !== "" ? "has-val input" : "input"}
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <span className="focus-input" data-placeholder="Escreva sua senha"></span>
+        </div>
+
+        <div className="container-login-form-btn">
+          <button className="login-form-btn">Login</button>
+        </div>
+
+        <div className="text-center">
+          <span className="txt1">Já possui conta? </span>
+          <Link className="txt2" to="/login">
+            Acessar com Email e Senha.
+          </Link>
+        </div>
+      </form>
+    </LayoutComponents>
+  )
+}
