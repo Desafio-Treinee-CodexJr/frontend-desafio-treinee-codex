@@ -1,5 +1,5 @@
-import SignButton from "../../components/SignButton";
-import SignInput from "../../components/SignInput";
+import SignupButton from "../../components/SignButton";
+import SignupInput from "../../components/SignInput";
 import React, { useState } from "react";
 import InvalidityMsg from "../../components/InvalidityMsg";
 import { validateEmail, validatePassword } from "../../util/validation";
@@ -18,69 +18,60 @@ function Signup() {
 
     return (
         <div id="signup">
-            <form id="signupInputs">
+            <div id="signup">
+                <div id="loginInputs">
 
-                <div id>
-                    <label>Primeiro Nome: </label>
-                    <input
-                        type="text"
-                        placeholder="Escreva seu primeiro nome." />
-                </div>
+                    <span
+                        id="signupTitle">Cadastre-se
+                    </span>
 
-                <div>
-                    <label>Sobrenome: </label>
-                    <input
-                        type="text"
-                        placeholder="Escreva o seu sobrenome." />
-                </div>
+                    <SignupInput
+                        label="Nome"
+                        type="name"
+                        placeholder="Escreva seu nome" />
 
-                <div>
-                    <label>Gênero: </label>
-                    <select name="genero">
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="outro">Outro</option>
-                    </select>
-                </div>
+                    <SignupInput
+                        label="Sobrenome"
+                        type="name"
+                        placeholder="Escreva seu sobrenome" />
 
-                <div>
-                    <label>Idade: </label>
-                    <input
+                    <div class="estilizavel">
+                        <label>Genero</label>
+                        <select name="genero">
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <SignupInput
+                        label="Idade"
                         type="number"
-                        name="idade"
-                        placeholder="Escreva sua idade." />
-                </div>
+                        placeholder="Informe sua idade" />
 
-                <div>
-                    <label>email:</label>
-                    <input
+                    <SignupInput
+                        label="Email"
                         type="email"
-                        placeholder="Ex: email@gmail.com." />
-                </div>
+                        placeholder="Escreva seu email" />
 
-                <div>
-                    <label>Senha:</label>
-                    <input
-                        type="password"
-                        placeholder="Informe uma senha." />
-                </div>
+                    <SignupInput
+                        label="Senha"
+                        type="password" />
 
-                <div>
-                    <label>Repete Senha:</label>
-                    <input
-                        type="password"
-                        placeholder="Por favor, repita sua senha."
-                    />
-                </div>
+                    <SignupInput
+                        label="Repita sua senha"
+                        type="password" />
 
-                <div>
-                    <input
-                        type="submit"
-                        name="submit"
-                        value="Submit" />
+                    <SignupButton
+                        onClick={SignupButton}
+                        text="Realizar Cadastro" />
+                    
+                    <a
+                        className="redirectLinks"
+                        href="/signup">Já possui uma conta?</a>
+                    
                 </div>
-
-            </form>
+            </div>
         </div>
     );
 };

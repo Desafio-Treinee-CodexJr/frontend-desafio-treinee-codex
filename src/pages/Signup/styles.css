@@ -1,33 +1,52 @@
-* {
-    box-sizing: border-box;
-}
-
-.box {
-    width: 80%;
-    margin: auto;
-}
-
-/*Estilização do formulário: */
-.main-form {
-    padding-left: 20px;
-}
-
-.main-form .form-group {
-    padding-bottom: 10px;
-}
-
-.main-form .form-group input {
-    padding: 10px;
+.signupInput {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    margin-top: 13px;
 }
 
-.main-form .form-gropu label {
-    display: block;
+.signupInput input {
+    border: 1px solid #757780;
+    border-radius: 5px;
+    outline: none;
+    padding: 0px 5px;
+    height: 25px;
 }
 
-.buttom {
-    padding: 15px;
-    background-color: #333;
-    color: #eee;
-    border: none;
+.signupButton {
+    width: 100%;
+    height: 45px;
+    margin-top: 15px;
+}
+
+#signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50%;
+}
+
+#signupInputs {
+    gap: 2px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    flex-direction: center;
+    align-items: center;
+    background-color: #F3f5f5;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+    margin: 10px;
+}
+
+.redirectLinks {
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+#signupTitle {
+    font-weight: bold;
+    font-size: 25px;
 }

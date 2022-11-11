@@ -7,19 +7,19 @@ import "./styles.css";
 import api from "../../service"
 import Header from "../../components/Header";
 
-function Login(){
+function Login() {
 
-    const [email, setEmail] = useState({value: "", invalidity: ""});
-    const [password, setPassword] = useState({value: "", invalidity: ""});
+    const [email, setEmail] = useState({ value: "", invalidity: "" });
+    const [password, setPassword] = useState({ value: "", invalidity: "" });
 
-    function changeEmail(e){
+    function changeEmail(e) {
         const value = e.target.value;
-        setEmail({...email, value});
+        setEmail({ ...email, value });
     };
 
-    function changePassword(e){
+    function changePassword(e) {
         const value = e.target.value;
-        setPassword({...password, value});
+        setPassword({ ...password, value });
     };
 
     const validateForm = () => {
@@ -33,71 +33,71 @@ function Login(){
     };
 
     const submit = () => {
-        if (validateForm()){
-/*             api.post(
-                "/user/signIn",
-                { email: email.value, password: password.value},
-                {headers: { "Content-Type": "application/json"}},
-            )
-            .then((response) => {
-                const token = response.data.token;
-                localStorage.setItem("token", token);
-                localStorage.setItem("user", JSON.stringify(response));
-                this.props.history.push("/home");
-            })
-            .catch((error) => {
-                console.log(error.response);
-                const msg = error.response.data;
-
-                if (msg.indexOf("email não cadastrado") !== -1) setEmail({ ...email, invalidity: "Emeial não cadastrado" });
-                else if (msg == "Senha inválida") setPassword({ ...password, invalidity: msg })
-            }) */
+        if (validateForm()) {
+            /*             api.post(
+                            "/user/signIn",
+                            { email: email.value, password: password.value},
+                            {headers: { "Content-Type": "application/json"}},
+                        )
+                        .then((response) => {
+                            const token = response.data.token;
+                            localStorage.setItem("token", token);
+                            localStorage.setItem("user", JSON.stringify(response));
+                            this.props.history.push("/home");
+                        })
+                        .catch((error) => {
+                            console.log(error.response);
+                            const msg = error.response.data;
+            
+                            if (msg.indexOf("email não cadastrado") !== -1) setEmail({ ...email, invalidity: "Emeial não cadastrado" });
+                            else if (msg == "Senha inválida") setPassword({ ...password, invalidity: msg })
+                        }) */
         }
     };
 
-    return(
+    return (
         <div>
-            <Header/>
+            <Header />
             <div id="login">
                 <div id="loginInputs">
-                    
+
                     <span
-                    id="loginTitle">Login
+                        id="loginTitle">Login
                     </span>
-                    
+
                     <SignInput
-                    label="Email"
-                    type="email"
-                    value={email.value}
-                    onChange={changeEmail}/>
-                    
+                        label="Email"
+                        type="email"
+                        value={email.value}
+                        onChange={changeEmail} />
+
                     <InvalidityMsg
-                    msg={email.invalidity}/>
-                    
+                        msg={email.invalidity} />
+
                     <SignInput
-                    label="Senha"
-                    type="password"
-                    value={password.value}
-                    onChange={changePassword}/>
-                    
+                        label="Senha"
+                        type="password"
+                        value={password.value}
+                        onChange={changePassword} />
+
                     <InvalidityMsg
-                    msg={password.invalidity}/>
-                    
+                        msg={password.invalidity} />
+
                     <SignButton
-                    onClick={submit}
-                    text="Entrar" />
-                    
+                        onClick={submit}
+                        text="Entrar" />
+
                     <a
-                    className="redirectLinks"
-                    href="/">Esqueceu a senha?</a>
-                    
+                        className="redirectLinks"
+                        href="/">Esqueceu a senha?</a>
+
                     <a
-                    className="redirectLinks"
-                    href="/signup">Cadastre-se</a>
+                        className="redirectLinks"
+                        href="/login">Cadastre-se</a>
                 </div>
             </div>
         </div>
-    
+
     );
 };
 
