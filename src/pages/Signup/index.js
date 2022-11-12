@@ -17,7 +17,8 @@ function Signup() {
     const [password, setPassword] = useState({ value: "", invalidity: "" });
 
     return (
-        <div id="signup">
+        <div>
+            <Header/>
             <div id="signup">
                 <div id="loginInputs">
 
@@ -68,7 +69,7 @@ function Signup() {
                     
                     <a
                         className="redirectLinks"
-                        href="/signup">Já possui uma conta?</a>
+                        href="/">Já possui uma conta?</a>
                     
                 </div>
             </div>
