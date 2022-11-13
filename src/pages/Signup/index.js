@@ -1,13 +1,14 @@
-import SignupButton from "../../components/SignButton";
-import SignupInput from "../../components/SignInput";
+import SignButton from "../../components/SignButton";
+import SignInput from "../../components/SignInput";
 import React, { useState } from "react";
 import InvalidityMsg from "../../components/InvalidityMsg";
 import { validateEmail, validatePassword } from "../../util/validation";
 import "./styles.css";
 import api from "../../service"
 import Header from "../../components/Header";
+import { useNavigate } from 'react-router-dom';
 
-function Signup() {
+function Signup(props) {
 
     const [name, setName] = useState("");
     const [sobrenome, SetName] = useState("");
@@ -16,9 +17,50 @@ function Signup() {
     const [email, setEmail] = useState({ value: "", invalidity: "" });
     const [password, setPassword] = useState({ value: "", invalidity: "" });
 
+    function changeEmail(e) {
+        const value = e.target.value;
+        setEmail({ ...email, value });
+    };
+
+    function changePassword(e) {
+        const value = e.target.value;
+        setPassword({ ...password, value });
+    };
+
+    const validateForm = () => {
+        const invalidityEmail = validateEmail(email.value);
+        const invalidityPassword = validatePassword(password.value);
+
+        setEmail({ ...email, invalidity: invalidityEmail });
+        setPassword({ ...password, invalidity: invalidityPassword });
+
+        return !invalidityEmail && !invalidityPassword ? true : false;
+    };
+
+    const navigate = useNavigate();
+
+    const submit = () => {
+        if (validateForm()) {
+            api.post(
+                "/users/create",
+                { email: email.value, password: password.value },
+                { headers: { "Content-Type": "application/json" } },
+            )
+                .then((response) => {
+                    const token = response.data.token;
+                    localStorage.setItem("token", token);
+                    localStorage.setItem("user", JSON.stringify(response));
+                    navigate('/home');
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+    };
+
     return (
         <div>
-            <Header/>
+            <Header />
             <div id="signup">
                 <div id="loginInputs">
 
@@ -26,17 +68,17 @@ function Signup() {
                         id="signupTitle">Cadastre-se
                     </span>
 
-                    <SignupInput
+                    <SignInput
                         label="Nome"
                         type="name"
                         placeholder="Escreva seu nome" />
 
-                    <SignupInput
+                    <SignInput
                         label="Sobrenome"
                         type="name"
                         placeholder="Escreva seu sobrenome" />
 
-                    <div class="estilizavel">
+                    <div className="estilizavel">
                         <label>Genero</label>
                         <select name="genero">
                             <option value="masculino">Masculino</option>
@@ -45,32 +87,40 @@ function Signup() {
                         </select>
                     </div>
 
-                    <SignupInput
+                    <SignInput
                         label="Idade"
                         type="number"
                         placeholder="Informe sua idade" />
 
-                    <SignupInput
+                    <SignInput
                         label="Email"
                         type="email"
+                        onChange={changeEmail}
                         placeholder="Escreva seu email" />
 
-                    <SignupInput
+                    <InvalidityMsg
+                        msg={email.invalidity} />
+
+                    <SignInput
                         label="Senha"
+                        onChange={changePassword}
                         type="password" />
 
-                    <SignupInput
+                    <SignInput
                         label="Repita sua senha"
                         type="password" />
 
-                    <SignupButton
-                        onClick={SignupButton}
+                    <InvalidityMsg
+                        msg={password.invalidity} />    
+
+                    <SignButton
+                        onClick={submit}
                         text="Realizar Cadastro" />
-                    
+
                     <a
                         className="redirectLinks"
                         href="/">Já possui uma conta?</a>
-                    
+
                 </div>
             </div>
         </div>
