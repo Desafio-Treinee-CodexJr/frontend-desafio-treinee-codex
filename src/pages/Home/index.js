@@ -26,8 +26,8 @@ function Home(props) {
         <>
             <Header />
             <form onSubmit={handleSubmit} id="form">
-                <input class="text-input" type="text" placeholder="Add uma tarefa" value={newItem} onChange={value => setNewItem(value.target.value)} />
-                <button class="button" onClick={() => addNewItem()} >Add</button>
+                <input className="text-input" type="text" placeholder="Add uma tarefa" value={newItem} onChange={value => setNewItem(value.target.value)} />
+                <button className="button" onClick={() => addNewItem()} >Add</button>
             </form>
             <ul id="todo-list">
                 <h3>Lista:</h3>
