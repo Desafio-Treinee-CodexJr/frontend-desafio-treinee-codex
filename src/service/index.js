@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "https://redin-api.herokuapp.com",
+    baseURL: process.env.URL_API_PROD,
 });
