@@ -10,7 +10,7 @@ import axios from "axios";
 
 function Login() {
     useEffect(() => {
-        axios.get("https://backend-desafio-treinee-codex.herokuapp.com")
+        axios.get("https://backend-desafio-treinee-codex.herokuapp.com/users")
         .then((response) => {
             console.log(response.data)
         })
