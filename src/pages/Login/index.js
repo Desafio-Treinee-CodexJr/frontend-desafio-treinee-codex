@@ -11,8 +11,8 @@ import axios from "axios";
 function Login() {
     useEffect(() => {
         axios.get("https://backend-desafio-treinee-codex.herokuapp.com")
-        .then(() => {
-            console.log("Conectado com sucesso")
+        .then((response) => {
+            console.log(response.data)
         })
         .catch(() => {
             console.log("Erro ao conectar")
