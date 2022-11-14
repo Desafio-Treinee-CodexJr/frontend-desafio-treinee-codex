@@ -12,9 +12,6 @@ function Login() {
     useEffect(() => {
         axios.get("https://backend-desafio-treinee-codex.herokuapp.com/users")
         .then((response) => {
-            if (response.data[0] == email) {
-                console.log("Email já cadastrado")
-            }
             console.log(response.data)
         })
         .catch(() => {
