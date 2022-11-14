@@ -1,13 +1,23 @@
 import SignButton from "../../components/SignButton";
 import SignInput from "../../components/SignInput";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InvalidityMsg from "../../components/InvalidityMsg";
 import { validateEmail, validatePassword } from "../../util/validation";
 import "./styles.css";
 import api from "../../service"
 import Header from "../../components/Header";
+import axios from "axios";
 
 function Login() {
+    useEffect(() => {
+        axios.get("https://backend-desafio-treinee-codex.herokuapp.com")
+        .then(() => {
+            console.log("Conectado com sucesso")
+        })
+        .catch(() => {
+            console.log("Erro ao conectar")
+        })
+    }, [])
 
     const [email, setEmail] = useState({ value: "", invalidity: "" });
     const [password, setPassword] = useState({ value: "", invalidity: "" });
