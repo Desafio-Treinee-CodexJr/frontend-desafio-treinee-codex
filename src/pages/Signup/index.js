@@ -27,36 +27,14 @@ function Signup(props) {
         setPassword({ ...password, value });
     };
 
-    function changeName(e) {
-        const value = e.target.value;
-        setName({ ...name, value });
-    };
-
-    function changeSobrenome(e) {
-        const value = e.target.value;
-        SetName({ ...sobrenome, value });
-    };
-
-    function changeGender(e) {
-        const value = e.target.value;
-        setGender({ ...gender, value });
-    }
-
-    function changeAge(e) {
-        const value = e.target.value;
-        setAge({ ...age, value });
-    }
-
     const validateForm = () => {
         const invalidityEmail = validateEmail(email.value);
         const invalidityPassword = validatePassword(password.value);
-        const invalidityName = validateName(name.value);
 
         setEmail({ ...email, invalidity: invalidityEmail });
         setPassword({ ...password, invalidity: invalidityPassword });
-        setName({ ...name, invalidity: invalidityName });
 
-        return !invalidityEmail && !invalidityPassword && !invalidityName ? true : false;
+        return !invalidityEmail && !invalidityPassword ? true : false;
     };
 
     const navigate = useNavigate();
@@ -65,7 +43,7 @@ function Signup(props) {
         if (validateForm()) {
             api.post(
                 "/users/create",
-                { email: email.value, password: password.value, name: name.value , sobrenome: sobrenome.value, gender: gender.value, age: age.value},
+                { email: email.value, password: password.value },
                 { headers: { "Content-Type": "application/json" } },
             )
                 .then((response) => {
