@@ -10,12 +10,12 @@ import { useNavigate } from 'react-router-dom';
 
 function Signup(props) {
 
-    const [name, setName] = useState("");
-    const [sobrenome, SetName] = useState("");
-    const [gender, setGender] = useState("");
-    const [age, setAge] = useState("");
+    const [name, setName] = useState({ value: "" });
+    const [gender, setGender] = useState({ value: "" });
+    const [age, setAge] = useState({ value: "", invalidity: "" });
     const [email, setEmail] = useState({ value: "", invalidity: "" });
     const [password, setPassword] = useState({ value: "", invalidity: "" });
+    const [secondPassword, setSecondPassword] = useState({ value: "", invalidity: "" });
 
     function changeEmail(e) {
         const value = e.target.value;
@@ -27,6 +27,21 @@ function Signup(props) {
         setPassword({ ...password, value });
     };
 
+    function changeAge(e) {
+        const value = e.target.value;
+        setAge({ ...age, value })
+    }
+
+    function changeName(e) {
+        const value = e.target.value;
+        setName({ ...name, value })
+    }
+
+    function changeGender(e) {
+        const value = e.target.value;
+        setGender({ ...gender, value })
+    }
+
     const validateForm = () => {
         const invalidityEmail = validateEmail(email.value);
         const invalidityPassword = validatePassword(password.value);
@@ -37,13 +52,26 @@ function Signup(props) {
         return !invalidityEmail && !invalidityPassword ? true : false;
     };
 
+    function changeSecondPassword(e) {
+        const value = e.target.value;
+        setSecondPassword({ ...secondPassword, value });
+    };
+
+    function passwordConfer() {
+        if (secondPassword.value != password.value) {
+            setPassword({ ...password, invalidity: "As senhas não coincidem" });
+            return false;
+        };
+        return true;
+    };
+
     const navigate = useNavigate();
 
     const submit = () => {
-        if (validateForm()) {
+        if (validateForm() && passwordConfer()) {
             api.post(
                 "/users/create",
-                { email: email.value, password: password.value },
+                { email: email.value, password: password.value, age: age.value, name: name.value, gender: gender.value },
                 { headers: { "Content-Type": "application/json" } },
             )
                 .then((response) => {
@@ -71,25 +99,13 @@ function Signup(props) {
                     <SignInput
                         label="Nome"
                         type="name"
-                        placeholder="Escreva seu nome" />
-
-                    <SignInput
-                        label="Sobrenome"
-                        type="name"
-                        placeholder="Escreva seu sobrenome" />
-
-                    <div className="estilizavel">
-                        <label>Genero</label>
-                        <select name="genero">
-                            <option value="masculino">Masculino</option>
-                            <option value="feminino">Feminino</option>
-                            <option value="outro">Outro</option>
-                        </select>
-                    </div>
+                        onChange={changeName}
+                        placeholder="Escreva seu nome completo" />
 
                     <SignInput
                         label="Idade"
                         type="number"
+                        onChange={changeAge}
                         placeholder="Informe sua idade" />
 
                     <SignInput
@@ -108,10 +124,18 @@ function Signup(props) {
 
                     <SignInput
                         label="Repita sua senha"
+                        onChange={changeSecondPassword}
                         type="password" />
 
                     <InvalidityMsg
-                        msg={password.invalidity} />    
+                        msg={password.invalidity} />
+
+                    <select name="genero" onChange={changeGender} id="selection-box" alt="Seleção de Gênero">
+                        <option value="">Selecione o seu gênero</option>
+                        <option value="Outro">Outro</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                    </select>
 
                     <SignButton
                         onClick={submit}
