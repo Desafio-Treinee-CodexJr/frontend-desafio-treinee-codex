@@ -58,7 +58,7 @@ function Signup(props) {
     };
 
     function passwordConfer() {
-        if (secondPassword.value != password.value) {
+        if (secondPassword.value !== password.value) {
             setPassword({ ...password, invalidity: "As senhas não coincidem" });
             return false;
         };
