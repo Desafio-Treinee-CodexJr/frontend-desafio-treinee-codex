@@ -7,16 +7,17 @@ import "./styles.css";
 import api from "../../service"
 import Header from "../../components/Header";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     useEffect(() => {
         axios.get("https://backend-desafio-treinee-codex.herokuapp.com/users")
-        .then((response) => {
-            console.log(response.data)
-        })
-        .catch(() => {
-            console.log("Erro ao conectar")
-        })
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch(() => {
+                console.log("Erro ao conectar")
+            })
     }, [])
 
     const [email, setEmail] = useState({ value: "", invalidity: "" });
@@ -42,26 +43,30 @@ function Login() {
         return !invalidityEmail && !invalidityPassword ? true : false;
     };
 
+    const navigate = useNavigate()
+
     const submit = () => {
         if (validateForm()) {
-            /*             api.post(
-                            "/user/signIn",
-                            { email: email.value, password: password.value},
-                            {headers: { "Content-Type": "application/json"}},
-                        )
-                        .then((response) => {
-                            const token = response.data.token;
-                            localStorage.setItem("token", token);
-                            localStorage.setItem("user", JSON.stringify(response));
-                            this.props.history.push("/home");
-                        })
-                        .catch((error) => {
-                            console.log(error.response);
-                            const msg = error.response.data;
-            
-                            if (msg.indexOf("email não cadastrado") !== -1) setEmail({ ...email, invalidity: "Emeial não cadastrado" });
-                            else if (msg == "Senha inválida") setPassword({ ...password, invalidity: msg })
-                        }) */
+            api.post(
+                "/users/auth",
+                { email: email.value, password: password.value },
+                { headers: { "Content-Type": "application/json" } },
+            )
+                .then((response) => {
+                    const token = response.data.token;
+                    localStorage.setItem("token", token);
+                    localStorage.setItem("user", JSON.stringify(response));
+                    const usertest = response.data.user;
+                    navigate('/home');
+                    console.log(usertest);
+                })
+                .catch((error) => {
+                    console.log(error.response);
+                    const msg = error.response.data;
+
+                    if (msg.indexOf("email não cadastrado") !== -1) setEmail({ ...email, invalidity: "Email não cadastrado" });
+                    else if (msg == "Senha inválida") setPassword({ ...password, invalidity: msg })
+                })
         }
     };
 
