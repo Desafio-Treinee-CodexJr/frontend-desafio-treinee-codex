@@ -10,7 +10,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-    useEffect(() => {
+/*     useEffect(() => {
         axios.get("https://backend-desafio-treinee-codex.herokuapp.com/users")
             .then((response) => {
                 console.log(response.data)
@@ -18,7 +18,7 @@ function Login() {
             .catch(() => {
                 console.log("Erro ao conectar")
             })
-    }, [])
+    }, []) */
 
     const [email, setEmail] = useState({ value: "", invalidity: "" });
     const [password, setPassword] = useState({ value: "", invalidity: "" });
@@ -56,16 +56,16 @@ function Login() {
                     const token = response.data.token;
                     localStorage.setItem("token", token);
                     localStorage.setItem("user", JSON.stringify(response));
-                    const usertest = response.data.user;
+                    localStorage.setItem("logged", "true");
+                    const usertest = response.data; 
                     navigate('/home');
-                    console.log(usertest);
                 })
                 .catch((error) => {
                     console.log(error.response);
-                    const msg = error.response.data;
+                    const msg = error.response.data.error;
 
-                    if (msg.indexOf("email não cadastrado") !== -1) setEmail({ ...email, invalidity: "Email não cadastrado" });
-                    else if (msg == "Senha inválida") setPassword({ ...password, invalidity: msg })
+                    if (msg.indexOf("Usuário não registrado!") !== -1) setEmail({ ...email, invalidity: "Email não cadastrado" });
+                    else if (msg === "Erro ao autenticar usuário!") setPassword({ ...password, invalidity: "Senha incorreta" })
                 })
         }
     };
