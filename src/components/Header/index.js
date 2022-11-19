@@ -1,6 +1,7 @@
 import "./styles.css";
 
 function Header(){
+    const iconURL = 'https://www.sabesim.com.br/wp-content/uploads/2021/05/list-2389219_1280.png'
 
     function logout(){
         localStorage.setItem("logged", "false");
@@ -13,7 +14,7 @@ function Header(){
                 <div id="header">
                     <div id="header-icon">
                         <a href="/home">
-                            <img src="https://source.unsplash.com/user/c_v_r"/>
+                            <img src={iconURL}/>
                         </a>
                     </div>
     
@@ -34,8 +35,8 @@ function Header(){
             <header>
                 <div id="header">
                     <div id="header-icon">
-                        <a href="/home">
-                            <img src="https://source.unsplash.com/user/c_v_r"/>
+                        <a>
+                            <img src={iconURL}/>
                         </a>
                     </div>
     

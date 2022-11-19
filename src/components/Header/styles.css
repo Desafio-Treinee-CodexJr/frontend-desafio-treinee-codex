@@ -20,5 +20,10 @@
     width: 60px; 
     height: 60px; 
     border-radius: 50%;
+    transition: transform .5s;
+}
+
+#header-icon:hover{
+    transform: scale(1.1);
 }
 
