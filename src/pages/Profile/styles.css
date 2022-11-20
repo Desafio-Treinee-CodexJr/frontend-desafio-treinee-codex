@@ -1,6 +1,8 @@
 #profile-photo {
+    object-fit: cover;
     width: 200px;
     border-radius: 50%;
+    height: 200px;
 }
 
 #profile-photo:hover {
@@ -42,14 +44,25 @@
     border: 1px solid #757780;
 }
 
-button {
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+#photo-input {
+    margin-top: 10px;
+    width: 160px;
+    border-radius: 5px;
+    border: #353535;
+    padding: 5px;
 }
 
-button:hover {
+#send-photo-button {
+    margin-top: 10px;
+    border-radius: 7px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    transition: transform .2s;
+    border: #F3f5f5;
+    background-color: rgb(241, 241, 241);
+}
+
+#send-photo-button:hover {
     cursor: pointer;
+    transform: scale(1.05);
 }

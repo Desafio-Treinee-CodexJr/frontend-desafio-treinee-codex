@@ -3,11 +3,13 @@ import React from "react";
 import api from "../../service/index";
 import { useState, useEffect } from "react";
 import "./styles.css";
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
     const [profileInfo, setProfileInfo] = useState([]);
     const [name, setName] = useState();
     const [age, setAge] = useState();
+    const [photo, setPhoto] = useState();
 
     async function changeName(e) {
         let name = e.target.value;
@@ -35,12 +37,30 @@ function Profile() {
         setAge(age);
     };
 
+    async function changePhoto(e) {
+        let photo = e.target.value;
+        setPhoto(photo);
+        console.log(photo)
+    };
+
     async function getUserInfo() {
         const response = await api.get(
             "/users/info",
             { headers: { "Content-Type": "application/json", "authorization": "Bearer " + localStorage.getItem("token") } },
         );
         setProfileInfo(response)
+    }
+
+    const navigate = useNavigate();
+
+    async function sendPhoto() {
+        const response = await api.put("/users/info", { photo: photo }, {
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": "Bearer " + localStorage.getItem("token")
+            }
+        });
+        window.location.reload(false)
     }
 
     useEffect(() => {
@@ -51,9 +71,9 @@ function Profile() {
         <>
             <Header />
             <div id='profile-infos'>
-                <button>
-                    <img id='profile-photo' src={profileInfo.data && profileInfo.data.photo}></img>
-                </button>
+                <img id='profile-photo' src={profileInfo.data && profileInfo.data.photo}></img>
+                <input type="text" id="photo-input" placeholder="Coloque a URL de sua foto" onChange={changePhoto}></input>
+                <button id="send-photo-button" onClick={sendPhoto}>Enviar foto</button>
                 <div id='profile-inputs'>
                     <label>Nome do usuário:</label>
                     <input type='text' className='profile-input' defaultValue={profileInfo.data && profileInfo.data.name} onChange={changeName}></input>
