@@ -108,7 +108,7 @@ function Login() {
 
                     <a
                         className="redirectLinks"
-                        href="/login">Cadastre-se</a>
+                        href="/singup">Cadastre-se</a>
                 </div>
             </div>
         </div>
