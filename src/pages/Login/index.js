@@ -4,9 +4,8 @@ import React, { useState, useEffect } from "react";
 import InvalidityMsg from "../../components/InvalidityMsg";
 import { validateEmail, validatePassword } from "../../util/validation";
 import "./styles.css";
-import api from "../../service"
+import api from "../../service";
 import Header from "../../components/Header";
-import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
