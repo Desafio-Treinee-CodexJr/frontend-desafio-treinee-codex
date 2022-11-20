@@ -7,9 +7,15 @@
 - Profile.
 
 ## Functionalities:
+- Register user;
+- Login user;
+- Logout user;
+- Update user infos;
 - Create to do activities;
-- Read this activities;
-- Update this activities;
-- Delet this activities.
+- Read activities;
+- Update activities;
+- Delet activities.
 
-Made by: Samuel Lucas and Miguel Macedo.
+Deploy [here](https://frontend-desafio-treinee-codex.herokuapp.com)!
+
+Made by: Samuel Lucas, Gustavo Soares and Miguel Macedo.
