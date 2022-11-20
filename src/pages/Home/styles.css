@@ -1,5 +1,6 @@
 #trash-icon{
     cursor: pointer;
+    margin-left: 7px;
 }
 
 .text-input{
@@ -34,5 +35,10 @@
 .todo-task{
     display: flex;
     align-items: center;
+    justify-content: center;
     list-style: none;
+}
+
+#done-input {
+    margin-right: 7px;
 }
