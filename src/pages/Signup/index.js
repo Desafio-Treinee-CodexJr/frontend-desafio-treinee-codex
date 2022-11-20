@@ -78,7 +78,7 @@ function Signup(props) {
                     const token = response.data.token;
                     localStorage.setItem("token", token);
                     localStorage.setItem("user", JSON.stringify(response));
-                    navigate('/home');
+                    navigate('/');
                 })
                 .catch((error) => {
                     console.log(error);
