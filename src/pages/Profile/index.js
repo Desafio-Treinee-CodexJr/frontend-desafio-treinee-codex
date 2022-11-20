@@ -4,9 +4,14 @@ import React from "react";
 function Profile(props) {
 
     const user = JSON.parse(localStorage.getItem("user"));
+    const photo = user.data.user.photo;
     return (
-        console.log(user),
-        <Header />
+        console.log(photo),
+        //<Header />
+        <img>
+            src = {photo}
+            alt="Foto de perfil"
+        </img>
     );
 };
 
