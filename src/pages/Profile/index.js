@@ -32,7 +32,7 @@ function Profile() {
             }
         });
         age = response.data.age;
-        setName(name);
+        setAge(age);
     };
 
     async function getUserInfo() {
