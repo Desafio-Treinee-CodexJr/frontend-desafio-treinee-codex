@@ -1,23 +1,23 @@
 import "./styles.css";
 
-function Header(){
+function Header() {
     const iconURL = 'https://www.sabesim.com.br/wp-content/uploads/2021/05/list-2389219_1280.png'
 
-    function logout(){
+    function logout() {
         localStorage.setItem("logged", "false");
         localStorage.setItem("token", "");
     };
 
-    if (localStorage.getItem("logged") === "true"){
-        return(
+    if (localStorage.getItem("logged") === "true") {
+        return (
             <header>
                 <div id="header">
                     <div id="header-icon">
                         <a href="/home">
-                            <img src={iconURL}/>
+                            <img src={iconURL} alt='Icone da página' />
                         </a>
                     </div>
-    
+
                     <div id="header-links">
                         <a href="/profile">
                             <span>Profile</span>
@@ -30,16 +30,14 @@ function Header(){
             </header>
         )
     }
-    else{
-        return(
+    else {
+        return (
             <header>
                 <div id="header">
                     <div id="header-icon">
-                        <a>
-                            <img src={iconURL}/>
-                        </a>
+                        <img src={iconURL} alt='Icone da página' />
                     </div>
-    
+
                     <div id="header-links">
                         <a href="/">
                             <span>SignIn</span>
