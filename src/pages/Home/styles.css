@@ -48,3 +48,16 @@
 .task-done {
     text-decoration: line-through;
 }
+
+#task-input {
+    width: 250px;
+    border-radius: 5px;
+    background-color: #F3f5f5;
+    border: #353535;
+    font-size: 14px;
+    padding: 2.5px;
+}
+
+#task-input:hover {
+    background-color: #dbdfdf;
+}
